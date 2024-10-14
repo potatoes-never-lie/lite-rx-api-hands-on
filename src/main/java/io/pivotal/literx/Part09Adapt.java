@@ -22,6 +22,7 @@ import io.pivotal.literx.domain.User;
 import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.plugins.RxJavaPlugins;
 import org.reactivestreams.Publisher;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -36,6 +37,10 @@ import reactor.core.publisher.Mono;
  * For RxJava 3, you should not use Reactor Adapter but only RxJava 3 and Reactor Core.
  *
  * @author Sebastien Deleuze
+ */
+
+/*
+ * pass 하자 ..
  */
 public class Part09Adapt {
 
@@ -79,12 +84,12 @@ public class Part09Adapt {
 
 	// TODO Adapt Mono to Java 8+ CompletableFuture
 	CompletableFuture<User> fromMonoToCompletableFuture(Mono<User> mono) {
-		return null;
+		return mono.toFuture();
 	}
 
 	// TODO Adapt Java 8+ CompletableFuture to Mono
 	Mono<User> fromCompletableFutureToMono(CompletableFuture<User> future) {
-		return null;
+		return Mono.fromFuture(future);
 	}
 
 }
